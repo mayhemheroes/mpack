@@ -1,0 +1,7 @@
+project: rnshah9/mpack
+target: mpack
+image: ghcr.io/rnshah9/playground:mpack
+
+cmds:
+  - cmd: /repo/.build/fuzz/mpack-fuzz
+    afl: true
