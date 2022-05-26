@@ -1,6 +1,5 @@
 project: rnshah9/mpack
-target: mpack
-image: ghcr.io/rnshah9/playground:mpack
+target: mpack-fuzz
 
 cmds:
   - cmd: /repo/.build/fuzz/mpack-fuzz
