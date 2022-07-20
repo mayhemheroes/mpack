@@ -7,15 +7,9 @@ RUN git clone https://github.com/mirrorer/afl
 WORKDIR /afl
 RUN make && make install
 
-ADD . /repo
+COPY . /repo
 WORKDIR /repo
 RUN make -f /repo/test/fuzz/Makefile
 
-RUN mkdir -p /deps
-RUN ldd /repo/.build/fuzz/mpack-fuzz | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
-
 FROM ubuntu:20.04 as package
-
-COPY --from=builder /deps /deps
 COPY --from=builder /repo/.build/fuzz/mpack-fuzz /repo/.build/fuzz/mpack-fuzz
-ENV LD_LIBRARY_PATH=/deps
