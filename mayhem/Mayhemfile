@@ -1,0 +1,6 @@
+project: mpack
+target: mpack-fuzz
+
+cmds:
+  - cmd: /repo/.build/fuzz/mpack-fuzz
+    afl: true
